@@ -9,10 +9,29 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play JapnFinal.</tw-noscript></noscript></tw-story>
-<tw-storydata name="JapnFinal" startnode="1" creator="Twine" creator-version="2.7.1" format="Harlowe" format-version="3.3.7" ifid="40C43DDF-E67C-4BFA-919F-7BDEE96DA513" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar
+<tw-storydata name="JapnFinal" startnode="5" creator="Twine" creator-version="2.7.1" format="Harlowe" format-version="3.3.7" ifid="40C43DDF-E67C-4BFA-919F-7BDEE96DA513" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar
 {
 	display: none;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="global" color="green"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="500,350" size="100,100">ナレーター：あなたの名前は山田です。ある日、あなた、たけしさん、メアリーさん、とジョンさんはい なかに旅行に行って、ある屋敷に泊まりました。実は、この屋敷はお化け屋敷でした。あなたたちは ぜんぜん知りませんでした。次の日、あなたたちが起きた時、屋敷の出口には鍵がかけてありまし た。今、あなたは日記とかばんがあります。皆さんは知らない部屋にいます。日記を使って、お化け 屋敷から逃げ出しましょう！ 
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="global" color="green"></tw-tag><tw-passagedata pid="1" name="Down1 " tags="" position="1400,500" size="100,100">ナレーター：地下に行きました。左と右に部屋があります。 
+
+(set: $downTraversed to true)
+
+[[Down2 &lt;- 次]]</tw-passagedata><tw-passagedata pid="2" name="Down2 " tags="" position="1275,650" size="100,100">ジョンさん：右の部屋の方が安全だと思う。
+
+ナレーター：この人が本当にジョンさんかどうかたしかめるために質問しますか。
+
+(set: $johnSpoke to true)
+
+[[downAsk1 &lt;- はい]]
+[[downFork &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="3" name="EveryoneEscapes" tags="" position="500,500" size="100,100">ナレーター：みんなで一緒にこの屋敷を出ました。</tw-passagedata><tw-passagedata pid="4" name="Forward1 " tags="" position="2000,500" size="100,100">ナレーター：廊下の方向に行きました。右にドアがあります。
+
+(set: $forwardTraversed to true)
+
+[[forwardStrait &lt;- まっすぐに行く ]]
+[[forwardRight &lt;- 右の部屋に入る ]]
+(if: $hasMap)[[forwardMap &lt;- 地図を見る]]
+
+</tw-passagedata><tw-passagedata pid="5" name="Start" tags="" position="500,350" size="100,100">ナレーター：あなたの名前は山田です。ある日、あなた、たけしさん、メアリーさん、とジョンさんはい なかに旅行に行って、ある屋敷に泊まりました。実は、この屋敷はお化け屋敷でした。あなたたちは ぜんぜん知りませんでした。次の日、あなたたちが起きた時、屋敷の出口には鍵がかけてありまし た。今、あなたは日記とかばんがあります。皆さんは知らない部屋にいます。日記を使って、お化け 屋敷から逃げ出しましょう！ 
 
 [[Start1 &lt;- 次]]
 
@@ -26,10 +45,9 @@
 
 (set: $downReturned to false)
 
-(set: $lastPassage to &quot;&quot;)</tw-passagedata><tw-passagedata pid="2" name="Start1 " tags="" position="700,350" size="100,100">ナレーター：今、知らない部屋にいます。何をしますか。 
+(set: $lastPassage to &quot;&quot;)</tw-passagedata><tw-passagedata pid="6" name="Start1 " tags="" position="700,350" size="100,100">ナレーター：今、知らない部屋にいます。何をしますか。 
 
-[[Start2&lt;- 部屋を出る]]
-</tw-passagedata><tw-passagedata pid="3" name="Start2" tags="" position="1400,350" size="100,100">ナレーター：三つの道が見えます。どちらの方向に進みますか。 
+[[Start2&lt;- 部屋を出る]]</tw-passagedata><tw-passagedata pid="7" name="Start2" tags="" position="1400,350" size="100,100">ナレーター：三つの道が見えます。どちらの方向に進みますか。 
 
 {(if: $downReturned)
 	[ジョン（本物）：ええ！あなたたちは今までどこにいたの)]
@@ -38,88 +56,16 @@
 
 (if: not $upTraversed)[[Up1 &lt;- 上の階の方向 ]]
 (if: not $forwardTraversed)[[Forward1 &lt;-廊下の方向]]
-(if: not $downTraversed)[[Down1 &lt;- 地下の方向]]
-</tw-passagedata><tw-passagedata pid="4" name="Up1 " tags="" position="800,500" size="100,100">ナレーター：二つの道が見えます。どちらの方向に進みますか。 
+(if: not $downTraversed)[[Down1 &lt;- 地下の方向]]</tw-passagedata><tw-passagedata pid="8" name="Up1 " tags="" position="800,500" size="100,100">ナレーター：二つの道が見えます。どちらの方向に進みますか。 
 
 (set: $upTraversed to True)
 
-[[Up2 &lt;- 次]]
+[[Up2 &lt;- 次]]</tw-passagedata><tw-passagedata pid="9" name="Up2 " tags="" position="800,625" size="100,100">メアリーさん：右に曲がろう！
 
-
-</tw-passagedata><tw-passagedata pid="5" name="Forward1 " tags="" position="2000,500" size="100,100">ナレーター：廊下の方向に行きました。右にドアがあります。</tw-passagedata><tw-passagedata pid="6" name="Down1 " tags="" position="1400,500" size="100,100">ナレーター：地下に行きました。左と右に部屋があります。 
-
-(set: $downTraversed to true)
-
-[[Down2 &lt;- 次]]</tw-passagedata><tw-passagedata pid="7" name="Up2 " tags="" position="800,625" size="100,100">メアリーさん：右に曲がろう！
-
-[[Up3 &lt;- 次]]</tw-passagedata><tw-passagedata pid="8" name="Up3 " tags="" position="800,750" size="100,100">ナレーター：この人が本当にメアリーさんかどうかたしかめるために質問しますか。
+[[Up3 &lt;- 次]]</tw-passagedata><tw-passagedata pid="10" name="Up3 " tags="" position="800,750" size="100,100">ナレーター：この人が本当にメアリーさんかどうかたしかめるために質問しますか。
 
 [[upAsk1 &lt;- はい]]
-[[upFork &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="9" name="globalDiary" tags="global" position="300,700" size="100,100">test
-(link-goto: &quot;Close&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="10" name="globals" tags="footer global" position="300,500" size="100,100">(if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(set: $lastPassage to (passage:)&#39;s name)]
-
-(if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(link-goto: &quot;Menu&quot;, &quot;globalMenu&quot;)]
-</tw-passagedata><tw-passagedata pid="11" name="upAsk1 " tags="" position="800,875" size="100,100">[[upAskIceCream &lt;- 山田: メアリーさん、どんなアイスクリームが一番すきなの？]]
-
-
-</tw-passagedata><tw-passagedata pid="12" name="globalInventory" tags="global" position="300,800" size="100,100">(if: $hasKey)[Key]
-(if: $hasLatern)[Latern]
-(if: $hasMap)[Map]
-(link-goto: &quot;Close&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="13" name="upAskIceCream " tags="" position="725,1000" size="100,100">メアリーさん：チョコレートが大好きなんだよ。
-
-[[upAskCollege &lt;- 山田：じゃあ、大学で何を勉強しているの？]]
-
-</tw-passagedata><tw-passagedata pid="14" name="upAskCollege " tags="" position="800,1125" size="100,100">メアリーさん：日本語だよ。でも、どうして今こんな質問をしたの？ 
-
-[[upFork &lt;- 山田：ちょっと興味があったんだ。 気にしないで]]
-
-</tw-passagedata><tw-passagedata pid="15" name="upFork " tags="" position="925,875" size="100,100">ナレーター：あなたはメアリーさんの答えを考えています
-
-[[upLeft &lt;- 左に曲がる ]]
-[[upright &lt;- 右に曲がる]]
-</tw-passagedata><tw-passagedata pid="16" name="upLeft " tags="" position="925,1050" size="100,100">山田：この廊下には何もないね。 
-
-メアリーさん：そうだね。 
-
-山田：一緒に別の場所に行こうか？ 
-
-メアリーさん：うん、行こう。 
-
-[[upFork &lt;- ナレーター：あなたたちは先の廊下に戻ります]]
-
-</tw-passagedata><tw-passagedata pid="17" name="upright " tags="" position="1050,1000" size="100,100">ナレーター：皆さんは部屋に入ります。部屋にドアがあります。あなたはかぎがあります か。 
-
-\(if: $hasKey)
-	[(link-goto:  &quot;ある&quot;, &quot;EveryoneEscapes&quot;)]
-\(else: )
-	[[upLootRoom &lt;- ない]]</tw-passagedata><tw-passagedata pid="18" name="EveryoneEscapes" tags="" position="500,500" size="100,100">ナレーター：みんなで一緒にこの屋敷を出ました。</tw-passagedata><tw-passagedata pid="19" name="upLootRoom " tags="" position="1175,1125" size="100,100">ナレーター：部屋に三つのアイテムがあります。一つのアイテムをとって、先の廊下に 戻ります。
-
-[[silverKeyBadEnd &lt;- &quot;銀の鍵&quot;]]
-[[latern &lt;- ランタン]]
-[[map &lt;- 屋敷の地図]]
-
-</tw-passagedata><tw-passagedata pid="20" name="silverKeyBadEnd " tags="" position="1175,1250" size="100,100">ナレーター：えっ！この銀の鍵はのろわれています。みんなはこの屋敷を永 遠に出られません</tw-passagedata><tw-passagedata pid="21" name="latern " tags="" position="1300,1250" size="100,100">ナレーター：ランタンを取りました。
-
-(set: $hasLatern to true)
-
-(link-goto: &quot; 山田：先の廊下に戻ろう&quot;, &quot;Start2&quot;)
-
-
-</tw-passagedata><tw-passagedata pid="22" name="map " tags="" position="1050,1250" size="100,100">ナレーター：屋敷の地図を取りました。
-
-(set: $hasMap to True)
-
-(link-goto: &quot; 山田：先の廊下に戻ろう&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="23" name="globalMenu" tags="global" position="300,600" size="100,100">(link-goto: &quot;ニューゲーム&quot;, &quot;Start&quot;)
-(link-goto: &quot;日記&quot;, &quot;globalDiary&quot;)
-(link-goto: &quot;Inventory&quot;, &quot;globalInventory&quot;)
-(link-goto: &quot;Leave Menu&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="24" name="Down2 " tags="" position="1275,650" size="100,100">ジョンさん：右の部屋の方が安全だと思う。
-
-ナレーター：この人が本当にジョンさんかどうかたしかめるために質問しますか。
-
-(set: $johnSpoke to true)
-
-[[downAsk1 &lt;- はい]]
-[[downFork &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="25" name="downAsk1 " tags="" position="1525,650" size="100,100">山田：一番好きな食べ物は何？
+[[upFork &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="11" name="downAsk1 " tags="" position="1525,650" size="100,100">山田：一番好きな食べ物は何？
 
 ジョンさん：ぎゅうどんだよ！
 
@@ -127,33 +73,110 @@
 
 ジョンさん：誕生日がいつか思い出せない。どうしたんだ？ 
 
-[[downFork &lt;- 山田：気にしないで。]]
-</tw-passagedata><tw-passagedata pid="26" name="downFork " tags="" position="1400,800" size="100,100">[[downLeft &lt;- 山田：左に曲がろう！ ]]
-[[downright &lt;- 山田：右に曲ろう！]]
-</tw-passagedata><tw-passagedata pid="27" name="downright " tags="" position="1400,925" size="100,100">ナレーター: 最悪です！みんなはえいえんに屋敷に閉じ込められました。 
+[[downFork &lt;- 山田：気にしないで。]]</tw-passagedata><tw-passagedata pid="12" name="downFork " tags="" position="1400,800" size="100,100">[[downLeft &lt;- 山田：左に曲がろう！ ]]
+[[downright &lt;- 山田：右に曲ろう！]]</tw-passagedata><tw-passagedata pid="13" name="downGoldKey " tags="" position="1525,1050" size="100,100">ナレーター：金の鍵をとりました。
 
-幽霊：いいね。みんなが私の友達になって、永遠にこの屋敷に一緒に住もう。
-</tw-passagedata><tw-passagedata pid="28" name="downLeft " tags="" position="1525,925" size="100,100">山田：わー！この部屋には三つのアイテムがある！
+[[downLeft &lt;- 山田：アイテムをもう取ろう]]
+[[downReturn &lt;- 山田：先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="14" name="downLatern " tags="" position="1650,1050" size="100,100">ナレーター：ランタンをとりました。
+
+[[downLeft &lt;- 山田：アイテムをもう取ろう]]
+[[downReturn &lt;- 山田：先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="15" name="downLeft " tags="" position="1525,925" size="100,100">山田：わー！この部屋には三つのアイテムがある！
 
 ナレーター：アイテムをとりますか。複数のアイテムをとってもいいです
 
-[[downGoldKey &lt;- 金の鍵 ]]
-[[downLatern &lt;- ランタン ]]
-[[downMap &lt;- 屋敷の地図]]
-[[downReturn &lt;-&quot;先の廊下に戻ろう]]
-
-</tw-passagedata><tw-passagedata pid="29" name="downLatern " tags="" position="1650,1050" size="100,100">ナレーター：ランタンをとりました。
+(if: not $hasKey)[[downGoldKey &lt;- 金の鍵 ]]
+(if: not $hasLatern)[[downLatern &lt;- ランタン ]]
+(if: not $hasMap)[[downMap &lt;- 屋敷の地図]]
+[[downReturn &lt;-&quot;先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="16" name="downMap " tags="" position="1400,1050" size="100,100">ナレーター：屋敷の地図をとりました。 
 
 [[downLeft &lt;- 山田：アイテムをもう取ろう]]
-[[downReturn &lt;- 山田：先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="30" name="downMap " tags="" position="1400,1050" size="100,100">ナレーター：屋敷の地図をとりました。 
-
-[[downLeft &lt;- 山田：アイテムをもう取ろう]]
-[[downReturn &lt;- 山田：先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="31" name="downGoldKey " tags="" position="1525,1050" size="100,100">ナレーター：金の鍵をとりました。
-
-[[downLeft &lt;- 山田：アイテムをもう取ろう]]
-[[downReturn &lt;- 山田：先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="32" name="downReturn " tags="" position="1525,1175" size="100,100">たけしさん：うん、そうしよう。 
+[[downReturn &lt;- 山田：先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="17" name="downReturn " tags="" position="1525,1175" size="100,100">たけしさん：うん、そうしよう。 
 
 (set: $downReturned to true)
+(link-goto: &quot;次&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="18" name="downright " tags="" position="1400,925" size="100,100">ナレーター: 最悪です！みんなはえいえんに屋敷に閉じ込められました。 
+
+幽霊：いいね。みんなが私の友達になって、永遠にこの屋敷に一緒に住もう。</tw-passagedata><tw-passagedata pid="19" name="globalDiary" tags="global" position="300,700" size="100,100">自分の日記： 
+あなたが起きた時、もうゲームのインベントリーに日記があります。この日記に友達のメアリーさんと たけしさんとジョンさんの自己紹介があります。出口を探しながら、時々友達に質問することができま す。質問の答えが日記に書いたことと違っていたら、その友達は幽霊かもしれません。幽霊の言うこ とを信じない方がいいですよ。 
+
+メアリーさんの自己紹介： 
+● アリゾナ大学で日本語を勉強しています。 
+● 誕生日は六月二十四日です。 
+● チョコレートのアイスクリームが大好きです。 
+
+たけしさんの自己紹介： 
+● 誕生日は三月二十日です。 
+● 旅行会社で働いています。 
+● いちごが大好きです。 
+
+ジョンさんの自己紹介： 
+● 忘れっぽいです。 
+● 誕生日は十月三十一日です。 
+● 一番好きな食べ物はやきそばです 
+
+
+(link-goto: &quot;Close&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="20" name="globalInventory" tags="global" position="300,800" size="100,100">(if: $hasKey)[Key]
+(if: $hasLatern)[Latern]
+(if: $hasMap)[Map]
+
+(link-goto: &quot;Close&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="21" name="globalMenu" tags="global" position="300,600" size="100,100">(link-goto: &quot;ニューゲーム&quot;, &quot;Start&quot;)
+(link-goto: &quot;日記&quot;, &quot;globalDiary&quot;)
+(link-goto: &quot;Inventory&quot;, &quot;globalInventory&quot;)
+(link-goto: &quot;Leave Menu&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="22" name="globals" tags="footer global" position="300,500" size="100,100">(if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(set: $lastPassage to (passage:)&#39;s name)]
+
+(if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(link-goto: &quot;Menu&quot;, &quot;globalMenu&quot;)]</tw-passagedata><tw-passagedata pid="23" name="latern " tags="" position="1300,1250" size="100,100">ナレーター：ランタンを取りました。
+
+(set: $hasLatern to true)
+
+(link-goto: &quot; 山田：先の廊下に戻ろう&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="24" name="map " tags="" position="1050,1250" size="100,100">ナレーター：屋敷の地図を取りました。
+
+(set: $hasMap to True)
+
+(link-goto: &quot; 山田：先の廊下に戻ろう&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="25" name="silverKeyBadEnd " tags="" position="1175,1250" size="100,100">ナレーター：えっ！この銀の鍵はのろわれています。みんなはこの屋敷を永 遠に出られません</tw-passagedata><tw-passagedata pid="26" name="upAsk1 " tags="" position="800,875" size="100,100">[[upAskIceCream &lt;- 山田: メアリーさん、どんなアイスクリームが一番すきなの？]]</tw-passagedata><tw-passagedata pid="27" name="upAskCollege " tags="" position="800,1125" size="100,100">メアリーさん：日本語だよ。でも、どうして今こんな質問をしたの？ 
+
+[[upFork &lt;- 山田：ちょっと興味があったんだ。 気にしないで]]</tw-passagedata><tw-passagedata pid="28" name="upAskIceCream " tags="" position="725,1000" size="100,100">メアリーさん：チョコレートが大好きなんだよ。
+
+[[upAskCollege &lt;- 山田：じゃあ、大学で何を勉強しているの？]]</tw-passagedata><tw-passagedata pid="29" name="upFork " tags="" position="925,875" size="100,100">ナレーター：あなたはメアリーさんの答えを考えています
+
+[[upLeft &lt;- 左に曲がる ]]
+[[upright &lt;- 右に曲がる]]</tw-passagedata><tw-passagedata pid="30" name="upLeft " tags="" position="925,1050" size="100,100">山田：この廊下には何もないね。 
+
+メアリーさん：そうだね。 
+
+山田：一緒に別の場所に行こうか？ 
+
+メアリーさん：うん、行こう。 
+
+[[upFork &lt;- ナレーター：あなたたちは先の廊下に戻ります]]</tw-passagedata><tw-passagedata pid="31" name="upLootRoom " tags="" position="1175,1125" size="100,100">ナレーター：部屋に三つのアイテムがあります。一つのアイテムをとって、先の廊下に 戻ります。
+
+[[silverKeyBadEnd &lt;- &quot;銀の鍵&quot;]]
+[[latern &lt;- ランタン]]
+[[map &lt;- 屋敷の地図]]</tw-passagedata><tw-passagedata pid="32" name="upright " tags="" position="1050,1000" size="100,100">ナレーター：皆さんは部屋に入ります。部屋にドアがあります。あなたはかぎがあります か。 
+
+\(if: $hasKey)
+	[(link-goto:  &quot;ある&quot;, &quot;EveryoneEscapes&quot;)]
+\(else: )
+	[[upLootRoom &lt;- ない]]</tw-passagedata><tw-passagedata pid="33" name="forwardStrait " tags="" position="2000,625" size="100,100">ナレーター：とつぜん、たけしさんはていあんします。 
+
+たけしさん：山田さん！日記をください。
+
+[[forwardAsk &lt;- ナレーター：たけしさんに質問をします。]]
+</tw-passagedata><tw-passagedata pid="34" name="forwardRight " tags="" position="2125,625" size="100,100">ナレーター：たけしさん以外の全員がなんとかにげてできました。たけしさんはまだにげられ ません。ざんねんですね。</tw-passagedata><tw-passagedata pid="35" name="forwardMap " tags="" position="1875,625" size="100,100">メーアリ：地図によると、右の部屋は危ないようだ。まっすぐに行こう。
+
+[[forwardStrait &lt;- まっすぐに行く ]]</tw-passagedata><tw-passagedata pid="36" name="forwardAsk " tags="" position="2000,750" size="100,100">山田さん：どこで働いている？ 
+
+たけしさん：旅行会社。
+
+山田さん：大好きな果物は？ 
+
+たけしさん：いちごだよ。
+
+ナレーター：たけしさんに日記をあげましょうか？
+
+[[forwardGive &lt;- あげる]]
+[[forwardDontGive &lt;- あげない ]]
+
+</tw-passagedata><tw-passagedata pid="37" name="forwardGive " tags="" position="2000,875" size="100,100">ナレーター：日記の中に屋敷を出る鍵があります。みんなで一緒にこの屋敷を出ました。</tw-passagedata><tw-passagedata pid="38" name="forwardDontGive " tags="" position="2125,875" size="100,100">ナレーター：廊下に戻ります。 
+
 (link-goto: &quot;次&quot;, &quot;Start2&quot;)
 </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
