@@ -1,0 +1,293 @@
+:: StoryTitle
+JapnFinal
+
+
+:: StoryData
+{
+  "ifid": "40C43DDF-E67C-4BFA-919F-7BDEE96DA513",
+  "format": "Harlowe",
+  "format-version": "3.3.7",
+  "start": "Start",
+  "tag-colors": {
+    "global": "green"
+  },
+  "zoom": 1
+}
+
+
+:: Down1\  {"position":"1400,500","size":"100,100"}
+ナレーター：地下に行きました。左と右に部屋があります。 
+
+(set: $downTraversed to true)
+
+[[Down2 <- 次]]
+
+
+:: Down2\  {"position":"1275,650","size":"100,100"}
+ジョンさん：右の部屋の方が安全だと思う。
+
+ナレーター：この人が本当にジョンさんかどうかたしかめるために質問しますか。
+
+(set: $johnSpoke to true)
+
+[[downAsk1 <- はい]]
+[[downFork <- いいえ]]
+
+
+:: EveryoneEscapes {"position":"500,500","size":"100,100"}
+ナレーター：みんなで一緒にこの屋敷を出ました。
+
+
+:: Forward1\  {"position":"2000,500","size":"100,100"}
+ナレーター：廊下の方向に行きました。右にドアがあります。
+
+
+:: Start {"position":"500,350","size":"100,100"}
+ナレーター：あなたの名前は山田です。ある日、あなた、たけしさん、メアリーさん、とジョンさんはい なかに旅行に行って、ある屋敷に泊まりました。実は、この屋敷はお化け屋敷でした。あなたたちは ぜんぜん知りませんでした。次の日、あなたたちが起きた時、屋敷の出口には鍵がかけてありまし た。今、あなたは日記とかばんがあります。皆さんは知らない部屋にいます。日記を使って、お化け 屋敷から逃げ出しましょう！ 
+
+[[Start1 <- 次]]
+
+(set: $hasKey to false)
+(set: $hasMap to false)
+(set: $hasLatern to false)
+
+(set: $upTraversed to false)
+(set: $forwardTraversed to false)
+(set: $downTraversed to false)
+
+(set: $downReturned to false)
+
+(set: $lastPassage to "")
+
+
+:: Start1\  {"position":"700,350","size":"100,100"}
+ナレーター：今、知らない部屋にいます。何をしますか。 
+
+[[Start2<- 部屋を出る]]
+
+
+
+:: Start2 {"position":"1400,350","size":"100,100"}
+ナレーター：三つの道が見えます。どちらの方向に進みますか。 
+
+{(if: $downReturned)
+	[ジョン（本物）：ええ！あなたたちは今までどこにいたの)]
+    (set: $downReturned to false)
+}
+
+(if: not $upTraversed)[[Up1 <- 上の階の方向 ]]
+(if: not $forwardTraversed)[[Forward1 <-廊下の方向]]
+(if: not $downTraversed)[[Down1 <- 地下の方向]]
+
+
+
+:: Up1\  {"position":"800,500","size":"100,100"}
+ナレーター：二つの道が見えます。どちらの方向に進みますか。 
+
+(set: $upTraversed to True)
+
+[[Up2 <- 次]]
+
+
+
+
+
+:: Up2\  {"position":"800,625","size":"100,100"}
+メアリーさん：右に曲がろう！
+
+[[Up3 <- 次]]
+
+
+:: Up3\  {"position":"800,750","size":"100,100"}
+ナレーター：この人が本当にメアリーさんかどうかたしかめるために質問しますか。
+
+[[upAsk1 <- はい]]
+[[upFork <- いいえ]]
+
+
+:: downAsk1\  {"position":"1525,650","size":"100,100"}
+山田：一番好きな食べ物は何？
+
+ジョンさん：ぎゅうどんだよ！
+
+山田：誕生日はいつ？ 
+
+ジョンさん：誕生日がいつか思い出せない。どうしたんだ？ 
+
+[[downFork <- 山田：気にしないで。]]
+
+
+
+:: downFork\  {"position":"1400,800","size":"100,100"}
+[[downLeft <- 山田：左に曲がろう！ ]]
+[[downright <- 山田：右に曲ろう！]]
+
+
+
+:: downGoldKey\  {"position":"1525,1050","size":"100,100"}
+ナレーター：金の鍵をとりました。
+
+[[downLeft <- 山田：アイテムをもう取ろう]]
+[[downReturn <- 山田：先の廊下に戻ろう]]
+
+
+:: downLatern\  {"position":"1650,1050","size":"100,100"}
+ナレーター：ランタンをとりました。
+
+[[downLeft <- 山田：アイテムをもう取ろう]]
+[[downReturn <- 山田：先の廊下に戻ろう]]
+
+
+:: downLeft\  {"position":"1525,925","size":"100,100"}
+山田：わー！この部屋には三つのアイテムがある！
+
+ナレーター：アイテムをとりますか。複数のアイテムをとってもいいです
+
+[[downGoldKey <- 金の鍵 ]]
+[[downLatern <- ランタン ]]
+[[downMap <- 屋敷の地図]]
+[[downReturn <-"先の廊下に戻ろう]]
+
+
+
+
+:: downMap\  {"position":"1400,1050","size":"100,100"}
+ナレーター：屋敷の地図をとりました。 
+
+[[downLeft <- 山田：アイテムをもう取ろう]]
+[[downReturn <- 山田：先の廊下に戻ろう]]
+
+
+:: downReturn\  {"position":"1525,1175","size":"100,100"}
+たけしさん：うん、そうしよう。 
+
+(set: $downReturned to true)
+(link-goto: "次", "Start2")
+
+
+
+:: downright\  {"position":"1400,925","size":"100,100"}
+ナレーター: 最悪です！みんなはえいえんに屋敷に閉じ込められました。 
+
+幽霊：いいね。みんなが私の友達になって、永遠にこの屋敷に一緒に住もう。
+
+
+
+:: globalDiary [global] {"position":"300,700","size":"100,100"}
+test
+(link-goto: "Close", $lastPassage)
+
+
+:: globalInventory [global] {"position":"300,800","size":"100,100"}
+(if: $hasKey)[Key]
+(if: $hasLatern)[Latern]
+(if: $hasMap)[Map]
+(link-goto: "Close", $lastPassage)
+
+
+:: globalMenu [global] {"position":"300,600","size":"100,100"}
+(link-goto: "ニューゲーム", "Start")
+(link-goto: "日記", "globalDiary")
+(link-goto: "Inventory", "globalInventory")
+(link-goto: "Leave Menu", $lastPassage)
+
+
+:: globals [footer global] {"position":"300,500","size":"100,100"}
+(if: not ((passage:)'s tags contains "global"))[(set: $lastPassage to (passage:)'s name)]
+
+(if: not ((passage:)'s tags contains "global"))[(link-goto: "Menu", "globalMenu")]
+
+
+
+:: latern\  {"position":"1300,1250","size":"100,100"}
+ナレーター：ランタンを取りました。
+
+(set: $hasLatern to true)
+
+(link-goto: " 山田：先の廊下に戻ろう", "Start2")
+
+
+
+
+
+:: map\  {"position":"1050,1250","size":"100,100"}
+ナレーター：屋敷の地図を取りました。
+
+(set: $hasMap to True)
+
+(link-goto: " 山田：先の廊下に戻ろう", "Start2")
+
+
+:: silverKeyBadEnd\  {"position":"1175,1250","size":"100,100"}
+ナレーター：えっ！この銀の鍵はのろわれています。みんなはこの屋敷を永 遠に出られません
+
+
+:: upAsk1\  {"position":"800,875","size":"100,100"}
+[[upAskIceCream <- 山田: メアリーさん、どんなアイスクリームが一番すきなの？]]
+
+
+
+
+
+:: upAskCollege\  {"position":"800,1125","size":"100,100"}
+メアリーさん：日本語だよ。でも、どうして今こんな質問をしたの？ 
+
+[[upFork <- 山田：ちょっと興味があったんだ。 気にしないで]]
+
+
+
+
+:: upAskIceCream\  {"position":"725,1000","size":"100,100"}
+メアリーさん：チョコレートが大好きなんだよ。
+
+[[upAskCollege <- 山田：じゃあ、大学で何を勉強しているの？]]
+
+
+
+
+:: upFork\  {"position":"925,875","size":"100,100"}
+ナレーター：あなたはメアリーさんの答えを考えています
+
+[[upLeft <- 左に曲がる ]]
+[[upright <- 右に曲がる]]
+
+
+
+:: upLeft\  {"position":"925,1050","size":"100,100"}
+山田：この廊下には何もないね。 
+
+メアリーさん：そうだね。 
+
+山田：一緒に別の場所に行こうか？ 
+
+メアリーさん：うん、行こう。 
+
+[[upFork <- ナレーター：あなたたちは先の廊下に戻ります]]
+
+
+
+
+:: upLootRoom\  {"position":"1175,1125","size":"100,100"}
+ナレーター：部屋に三つのアイテムがあります。一つのアイテムをとって、先の廊下に 戻ります。
+
+[[silverKeyBadEnd <- "銀の鍵"]]
+[[latern <- ランタン]]
+[[map <- 屋敷の地図]]
+
+
+
+
+:: upright\  {"position":"1050,1000","size":"100,100"}
+ナレーター：皆さんは部屋に入ります。部屋にドアがあります。あなたはかぎがあります か。 
+
+\(if: $hasKey)
+	[(link-goto:  "ある", "EveryoneEscapes")]
+\(else: )
+	[[upLootRoom <- ない]]
+
+
+:: StoryStylesheet [stylesheet]
+tw-sidebar
+{
+	display: none;
+}
