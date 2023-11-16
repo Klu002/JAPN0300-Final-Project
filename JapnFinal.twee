@@ -38,12 +38,12 @@ JapnFinal
 ナレーター：みんなで一緒にこの屋敷を出ました。
 
 
-:: Forward1\  {"position":"2000,500","size":"100,100"}
+:: Forward1 {"position":"2000,500","size":"100,100"}
 ナレーター：廊下の方向に行きました。右にドアがあります。
 
 (set: $forwardTraversed to true)
 
-[[forwardStrait <- まっすぐに行く ]]
+(if: not $wentForward)[[forwardStrait <- まっすぐに行く ]]
 [[forwardRight <- 右の部屋に入る ]]
 (if: $hasMap)[[forwardMap <- 地図を見る]]
 
@@ -51,7 +51,7 @@ JapnFinal
 
 
 :: Start {"position":"500,350","size":"100,100"}
-ナレーター：あなたの名前は山田です。ある日、あなた、たけしさん、メアリーさん、とジョンさんはい なかに旅行に行って、ある屋敷に泊まりました。実は、この屋敷はお化け屋敷でした。あなたたちは ぜんぜん知りませんでした。次の日、あなたたちが起きた時、屋敷の出口には鍵がかけてありまし た。今、あなたは日記とかばんがあります。皆さんは知らない部屋にいます。日記を使って、お化け 屋敷から逃げ出しましょう！ 
+ナレーター：あなたの名前は山田です。ある日、あなた、たけしさん、メアリーさん、ジョンさんの四人はいなかに旅行に行って、ある屋敷に泊まりました。実は、この屋敷はお化け屋敷でした。あなたたちはぜんぜん知りませんでした。次の日、あなたたちが起きた時、屋敷の出口には鍵がかけてありました。今、あなたは日記とかばんがあります。皆さんは知らない部屋にいます。日記を使って、お化け屋敷から逃げ出しましょう！
 
 [[Start1 <- 次]]
 
@@ -64,6 +64,7 @@ JapnFinal
 (set: $downTraversed to false)
 
 (set: $downReturned to false)
+(set: $wentForward to false)
 
 (set: $lastPassage to "")
 
@@ -78,12 +79,12 @@ JapnFinal
 ナレーター：三つの道が見えます。どちらの方向に進みますか。 
 
 {(if: $downReturned)
-	[ジョン（本物）：ええ！あなたたちは今までどこにいたの)]
+	[ジョン（本物）：ええ！あなたたちは今までどこにいたの?]
     (set: $downReturned to false)
 }
 
 (if: not $upTraversed)[[Up1 <- 上の階の方向 ]]
-(if: not $forwardTraversed)[[Forward1 <-廊下の方向]]
+(if: not $forwardTraversed)[[Forward1<-廊下の方向]]
 (if: not $downTraversed)[[Down1 <- 地下の方向]]
 
 
@@ -113,29 +114,39 @@ JapnFinal
 
 ジョンさん：ぎゅうどんだよ！
 
-山田：誕生日はいつ？ 
+[[downAsk2 <- 山田：誕生日はいつ？]]
 
+
+
+
+:: downAsk2\  {"position":"1525,775","size":"100,100"}
 ジョンさん：誕生日がいつか思い出せない。どうしたんだ？ 
 
-[[downFork <- 山田：気にしないで。]]
+山田：気にしないで。
+
+[[downFork <- ナレーター：あなたはジョンさんの答えを考えています。]]
 
 
 :: downFork\  {"position":"1400,800","size":"100,100"}
-[[downLeft <- 山田：左に曲がろう！ ]]
-[[downright <- 山田：右に曲ろう！]]
+[[downLeft <- 山田：左に曲がろう！(ジョンさんを信じない)]]
+[[downright <- 山田：右に曲がろう！(ジョンさんを信じる)]]
 
 
 :: downGoldKey\  {"position":"1525,1050","size":"100,100"}
 ナレーター：金の鍵をとりました。
 
-[[downLeft <- 山田：アイテムをもう取ろう]]
+(set: $hasKey to true)
+
+[[downLeft <- 山田：アイテムをもう一つ取ろう]]
 [[downReturn <- 山田：先の廊下に戻ろう]]
 
 
 :: downLatern\  {"position":"1650,1050","size":"100,100"}
 ナレーター：ランタンをとりました。
 
-[[downLeft <- 山田：アイテムをもう取ろう]]
+(set: $hasLantern to true)
+
+[[downLeft <- 山田：アイテムをもう一つ取ろう]]
 [[downReturn <- 山田：先の廊下に戻ろう]]
 
 
@@ -145,15 +156,17 @@ JapnFinal
 ナレーター：アイテムをとりますか。複数のアイテムをとってもいいです
 
 (if: not $hasKey)[[downGoldKey <- 金の鍵 ]]
-(if: not $hasLatern)[[downLatern <- ランタン ]]
+(if: not $hasLantern)[[downLatern <- ランタン ]]
 (if: not $hasMap)[[downMap <- 屋敷の地図]]
-[[downReturn <-"先の廊下に戻ろう]]
+[[downReturn <- 先の廊下に戻ろう]]
 
 
 :: downMap\  {"position":"1400,1050","size":"100,100"}
 ナレーター：屋敷の地図をとりました。 
 
-[[downLeft <- 山田：アイテムをもう取ろう]]
+(set: $hasMap to true)
+
+[[downLeft <- 山田：アイテムをもう一つ取ろう]]
 [[downReturn <- 山田：先の廊下に戻ろう]]
 
 
@@ -165,7 +178,7 @@ JapnFinal
 
 
 :: downright\  {"position":"1400,925","size":"100,100"}
-ナレーター: 最悪です！みんなはえいえんに屋敷に閉じ込められました。 
+ナレーター: みんなはえいえんに屋敷に閉じ込められました。 
 
 幽霊：いいね。みんなが私の友達になって、永遠にこの屋敷に一緒に住もう。
 
@@ -175,27 +188,39 @@ JapnFinal
 
 たけしさん：旅行会社。
 
-山田さん：大好きな果物は？ 
+[[forwardAsk2 <- 山田さん：大好きな果物は？]]
 
+
+
+
+
+
+
+
+
+:: forwardAsk2\  {"position":"1875,875","size":"100,100"}
 たけしさん：いちごだよ。
 
-ナレーター：たけしさんに日記をあげましょうか？
-
-[[forwardGive <- あげる]]
-[[forwardDontGive <- あげない ]]
+[[forwardChoose <- 次]]
 
 
+:: forwardChoose\  {"position":"2200,950","size":"100,100"}
+ナレーター：たけしさんに日記をあげますか？
+
+[[forwardGive <-　あげる（たけしさんを信じる)]]
+[[forwardDontGive <-　あげない (たけしさんを信じない)]]
 
 
-:: forwardDontGive\  {"position":"2125,875","size":"100,100"}
+:: forwardDontGive\  {"position":"1875,1125","size":"100,100"}
 ナレーター：廊下に戻ります。 
 
-(link-goto: "次", "Start2")
+(link-goto: "次", "Forward1")
 
 
 
-:: forwardGive\  {"position":"2000,875","size":"100,100"}
-ナレーター：日記の中に屋敷を出る鍵があります。みんなで一緒にこの屋敷を出ました。
+:: forwardGive\  {"position":"2075,1125","size":"100,100"}
+ナレーター：日記の中に屋敷を出る鍵がありました。みんなで一緒にこの屋敷を出ました。
+
 
 
 :: forwardMap\  {"position":"1875,625","size":"100,100"}
@@ -205,21 +230,25 @@ JapnFinal
 
 
 :: forwardRight\  {"position":"2125,625","size":"100,100"}
-ナレーター：たけしさん以外の全員がなんとかにげてできました。たけしさんはまだにげられ ません。ざんねんですね。
+ナレーター：たけしさん以外の全員がなんとかにげてできました。たけしさんはまだにげられ ません。
 
 
 :: forwardStrait\  {"position":"2000,625","size":"100,100"}
-ナレーター：とつぜん、たけしさんはていあんします。 
+ナレーター：とつぜん、たけしさんは日記がほしいと言い出します。 
 
 たけしさん：山田さん！日記をください。
 
-[[forwardAsk <- ナレーター：たけしさんに質問をします。]]
+ナレーター：そこであなたはたけしさんに質問をしますか？
 
+(set: $wentForward to true)
+
+[[forwardAsk <- はい]]
+[[forwardChoose <- いいえ]]
 
 
 :: globalDiary [global] {"position":"300,700","size":"100,100"}
 自分の日記： 
-あなたが起きた時、もうゲームのインベントリーに日記があります。この日記に友達のメアリーさんと たけしさんとジョンさんの自己紹介があります。出口を探しながら、時々友達に質問することができま す。質問の答えが日記に書いたことと違っていたら、その友達は幽霊かもしれません。幽霊の言うこ とを信じない方がいいですよ。 
+あなたが起きた時、もうゲームのインベントリーに日記があります。この日記に友達のメアリーさんと たけしさんとジョンさんの自己紹介があります。出口を探しながら、時々友達に質問することができま す。質問の答えが日記に書いたことと違っていたら、その友達は幽霊かもしれません。幽霊の言うこ とを信じない方がいいです。 
 
 メアリーさんの自己紹介： 
 ● アリゾナ大学で日本語を勉強しています。 
@@ -234,16 +263,16 @@ JapnFinal
 ジョンさんの自己紹介： 
 ● 忘れっぽいです。 
 ● 誕生日は十月三十一日です。 
-● 一番好きな食べ物はやきそばです 
+● 一番好きな食べ物はやきそばです。
 
 
 (link-goto: "Close", $lastPassage)
 
 
 :: globalInventory [global] {"position":"300,800","size":"100,100"}
-(if: $hasKey)[Key]
-(if: $hasLatern)[Latern]
-(if: $hasMap)[Map]
+(if: $hasKey)[金の鍵]
+(if: $hasLantern)[ランタン]
+(if: $hasMap)[屋敷の地図]
 
 (link-goto: "Close", $lastPassage)
 
@@ -251,7 +280,7 @@ JapnFinal
 :: globalMenu [global] {"position":"300,600","size":"100,100"}
 (link-goto: "ニューゲーム", "Start")
 (link-goto: "日記", "globalDiary")
-(link-goto: "Inventory", "globalInventory")
+(link-goto: "アイテム", "globalInventory")
 (link-goto: "Leave Menu", $lastPassage)
 
 
@@ -264,9 +293,9 @@ JapnFinal
 :: latern\  {"position":"1300,1250","size":"100,100"}
 ナレーター：ランタンを取りました。
 
-(set: $hasLatern to true)
+(set: $hasLantern to true)
 
-(link-goto: " 山田：先の廊下に戻ろう", "Start2")
+(link-goto: "山田：先の廊下に戻ろう", "Start2")
 
 
 :: map\  {"position":"1050,1250","size":"100,100"}
@@ -274,11 +303,11 @@ JapnFinal
 
 (set: $hasMap to True)
 
-(link-goto: " 山田：先の廊下に戻ろう", "Start2")
+(link-goto: "山田：先の廊下に戻ろう", "Start2")
 
 
 :: silverKeyBadEnd\  {"position":"1175,1250","size":"100,100"}
-ナレーター：えっ！この銀の鍵はのろわれています。みんなはこの屋敷を永 遠に出られません
+ナレーター：この銀の鍵はのろわれています。みんなはこの屋敷を永遠に出られません。
 
 
 :: upAsk1\  {"position":"800,875","size":"100,100"}
@@ -288,7 +317,9 @@ JapnFinal
 :: upAskCollege\  {"position":"800,1125","size":"100,100"}
 メアリーさん：日本語だよ。でも、どうして今こんな質問をしたの？ 
 
-[[upFork <- 山田：ちょっと興味があったんだ。 気にしないで]]
+山田：ちょっと興味があったんだ。 気にしないで。
+
+[[upFork <- ナレーター：あなたはメアリーさんの答えを考えています。]]
 
 
 :: upAskIceCream\  {"position":"725,1000","size":"100,100"}
@@ -298,10 +329,8 @@ JapnFinal
 
 
 :: upFork\  {"position":"925,875","size":"100,100"}
-ナレーター：あなたはメアリーさんの答えを考えています
-
-[[upLeft <- 左に曲がる ]]
-[[upright <- 右に曲がる]]
+[[upLeft <- 左に曲がる (メアリーさんを信じない)]]
+[[upright <- 右に曲がる (メアリーさんを信じる)]]
 
 
 :: upLeft\  {"position":"925,1050","size":"100,100"}
@@ -319,7 +348,7 @@ JapnFinal
 :: upLootRoom\  {"position":"1175,1125","size":"100,100"}
 ナレーター：部屋に三つのアイテムがあります。一つのアイテムをとって、先の廊下に 戻ります。
 
-[[silverKeyBadEnd <- "銀の鍵"]]
+[[silverKeyBadEnd <- 銀の鍵]]
 [[latern <- ランタン]]
 [[map <- 屋敷の地図]]
 

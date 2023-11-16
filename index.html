@@ -23,11 +23,11 @@
 (set: $johnSpoke to true)
 
 [[downAsk1 &lt;- はい]]
-[[downFork &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="3" name="EveryoneEscapes" tags="" position="500,500" size="100,100">ナレーター：みんなで一緒にこの屋敷を出ました。</tw-passagedata><tw-passagedata pid="4" name="Forward1 " tags="" position="2000,500" size="100,100">ナレーター：廊下の方向に行きました。右にドアがあります。
+[[downFork &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="3" name="EveryoneEscapes" tags="" position="500,500" size="100,100">ナレーター：みんなで一緒にこの屋敷を出ました。</tw-passagedata><tw-passagedata pid="4" name="Forward1" tags="" position="2000,500" size="100,100">ナレーター：廊下の方向に行きました。右にドアがあります。
 
 (set: $forwardTraversed to true)
 
-[[forwardStrait &lt;- まっすぐに行く ]]
+(if: not $wentForward)[[forwardStrait &lt;- まっすぐに行く ]]
 [[forwardRight &lt;- 右の部屋に入る ]]
 (if: $hasMap)[[forwardMap &lt;- 地図を見る]]
 
@@ -44,18 +44,19 @@
 (set: $downTraversed to false)
 
 (set: $downReturned to false)
+(set: $wentForward to false)
 
 (set: $lastPassage to &quot;&quot;)</tw-passagedata><tw-passagedata pid="6" name="Start1 " tags="" position="700,350" size="100,100">ナレーター：今、知らない部屋にいます。何をしますか。 
 
 [[Start2&lt;- 部屋を出る]]</tw-passagedata><tw-passagedata pid="7" name="Start2" tags="" position="1400,350" size="100,100">ナレーター：三つの道が見えます。どちらの方向に進みますか。 
 
 {(if: $downReturned)
-	[ジョン（本物）：ええ！あなたたちは今までどこにいたの)]
+	[ジョン（本物）：ええ！あなたたちは今までどこにいたの?]
     (set: $downReturned to false)
 }
 
 (if: not $upTraversed)[[Up1 &lt;- 上の階の方向 ]]
-(if: not $forwardTraversed)[[Forward1 &lt;-廊下の方向]]
+(if: not $forwardTraversed)[[Forward1&lt;-廊下の方向]]
 (if: not $downTraversed)[[Down1 &lt;- 地下の方向]]</tw-passagedata><tw-passagedata pid="8" name="Up1 " tags="" position="800,500" size="100,100">ナレーター：二つの道が見えます。どちらの方向に進みますか。 
 
 (set: $upTraversed to True)
@@ -87,7 +88,7 @@
 ナレーター：アイテムをとりますか。複数のアイテムをとってもいいです
 
 (if: not $hasKey)[[downGoldKey &lt;- 金の鍵 ]]
-(if: not $hasLatern)[[downLatern &lt;- ランタン ]]
+(if: not $hasLantern)[[downLatern &lt;- ランタン ]]
 (if: not $hasMap)[[downMap &lt;- 屋敷の地図]]
 [[downReturn &lt;- 先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="16" name="downMap " tags="" position="1400,1050" size="100,100">ナレーター：屋敷の地図をとりました。 
 
@@ -119,7 +120,7 @@
 
 
 (link-goto: &quot;Close&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="20" name="globalInventory" tags="global" position="300,800" size="100,100">(if: $hasKey)[金の鍵]
-(if: $hasLatern)[ランタン]
+(if: $hasLantern)[ランタン]
 (if: $hasMap)[屋敷の地図]
 
 (link-goto: &quot;Close&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="21" name="globalMenu" tags="global" position="300,600" size="100,100">(link-goto: &quot;ニューゲーム&quot;, &quot;Start&quot;)
@@ -129,7 +130,7 @@
 
 (if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(link-goto: &quot;Menu&quot;, &quot;globalMenu&quot;)]</tw-passagedata><tw-passagedata pid="23" name="latern " tags="" position="1300,1250" size="100,100">ナレーター：ランタンを取りました。
 
-(set: $hasLatern to true)
+(set: $hasLantern to true)
 
 (link-goto: &quot;山田：先の廊下に戻ろう&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="24" name="map " tags="" position="1050,1250" size="100,100">ナレーター：屋敷の地図を取りました。
 
@@ -165,8 +166,10 @@
 
 ナレーター：そこであなたはたけしさんに質問をしますか？
 
+(set: $wentForward to true)
+
 [[forwardAsk &lt;- はい]]
-[[forwardGive &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="34" name="forwardRight " tags="" position="2125,625" size="100,100">ナレーター：たけしさん以外の全員がなんとかにげてできました。たけしさんはまだにげられ ません。ざんねんですね。</tw-passagedata><tw-passagedata pid="35" name="forwardMap " tags="" position="1875,625" size="100,100">メーアリ：地図によると、右の部屋は危ないようだ。まっすぐに行こう。
+[[forwardChoose &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="34" name="forwardRight " tags="" position="2125,625" size="100,100">ナレーター：たけしさん以外の全員がなんとかにげてできました。たけしさんはまだにげられ ません。</tw-passagedata><tw-passagedata pid="35" name="forwardMap " tags="" position="1875,625" size="100,100">メーアリ：地図によると、右の部屋は危ないようだ。まっすぐに行こう。
 
 [[forwardStrait &lt;- まっすぐに行く ]]</tw-passagedata><tw-passagedata pid="36" name="forwardAsk " tags="" position="2000,750" size="100,100">山田さん：どこで働いている？ 
 
@@ -179,20 +182,20 @@
 
 
 
-</tw-passagedata><tw-passagedata pid="37" name="forwardGive " tags="" position="1875,1000" size="100,100">ナレーター：日記の中に屋敷を出る鍵がありました。みんなで一緒にこの屋敷を出ました。
-</tw-passagedata><tw-passagedata pid="38" name="forwardDontGive " tags="" position="2000,1000" size="100,100">ナレーター：廊下に戻ります。 
+</tw-passagedata><tw-passagedata pid="37" name="forwardGive " tags="" position="2075,1125" size="100,100">ナレーター：日記の中に屋敷を出る鍵がありました。みんなで一緒にこの屋敷を出ました。
+</tw-passagedata><tw-passagedata pid="38" name="forwardDontGive " tags="" position="1875,1125" size="100,100">ナレーター：廊下に戻ります。 
 
-(link-goto: &quot;次&quot;, &quot;Start2&quot;)
+(link-goto: &quot;次&quot;, &quot;Forward1&quot;)
 </tw-passagedata><tw-passagedata pid="39" name="downAsk2 " tags="" position="1525,775" size="100,100">ジョンさん：誕生日がいつか思い出せない。どうしたんだ？ 
 
 山田：気にしないで。
 
 [[downFork &lt;- ナレーター：あなたはジョンさんの答えを考えています。]]</tw-passagedata><tw-passagedata pid="40" name="forwardAsk2 " tags="" position="1875,875" size="100,100">たけしさん：いちごだよ。
 
-ナレーター：たけしさんに日記をあげますか？
+[[forwardChoose &lt;- 次]]</tw-passagedata><tw-passagedata pid="41" name="forwardChoose " tags="" position="2200,950" size="100,100">ナレーター：たけしさんに日記をあげますか？
 
-[[forwardGive &lt;-（たけしさんを信じる)]]
-[[forwardDontGive &lt;- (たけしさんを信じない)]]</tw-passagedata></tw-storydata>
+[[forwardGive &lt;-　あげる（たけしさんを信じる)]]
+[[forwardDontGive &lt;-　あげない (たけしさんを信じない)]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
