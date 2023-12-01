@@ -20,6 +20,16 @@
   margin-right: auto;
   width: 50%;
 }
+
+.cropped {
+  display: block;
+  margin-left: 10%;
+  margin-right: auto;
+  width: 50%;
+  clip-path: polygon(50% 0, 100% 0%, 100% 100%, 50% 100%);
+}
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="global" color="green"></tw-tag><tw-passagedata pid="1" name="Down1 " tags="" position="1400,500" size="100,100">&lt;img src=&quot;https://as1.ftcdn.net/v2/jpg/05/50/90/36/1000_F_550903658_37pxXgusGNQrYJAwmE0uKtrPfulFyNVF.jpg&quot; class=&quot;center&quot;&gt;
 
 
@@ -156,9 +166,9 @@
 (link-goto: &quot;Close&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="21" name="globalMenu" tags="global" position="300,600" size="100,100">(link-goto: &quot;ニューゲーム&quot;, &quot;Start&quot;)
 (link-goto: &quot;日記&quot;, &quot;globalDiary&quot;)
 (link-goto: &quot;アイテム&quot;, &quot;globalInventory&quot;)
-(link-goto: &quot;Leave Menu&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="22" name="globals" tags="footer global" position="300,500" size="100,100">(if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(set: $lastPassage to (passage:)&#39;s name)]
+(link-goto: &quot;もどる&quot;, $lastPassage)</tw-passagedata><tw-passagedata pid="22" name="globals" tags="footer global" position="300,500" size="100,100">(if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(set: $lastPassage to (passage:)&#39;s name)]
 
-(if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(link-goto: &quot;Menu&quot;, &quot;globalMenu&quot;)]</tw-passagedata><tw-passagedata pid="23" name="latern " tags="" position="1300,1250" size="100,100">ナレーター：ランタンを取りました。
+(if: not ((passage:)&#39;s tags contains &quot;global&quot;))[(link-goto: &quot;メニュー&quot;, &quot;globalMenu&quot;)]</tw-passagedata><tw-passagedata pid="23" name="latern " tags="" position="1300,1250" size="100,100">ナレーター：ランタンを取りました。
 
 (set: $hasLantern to true)
 
@@ -203,7 +213,7 @@
 (set: $wentForward to true)
 
 [[forwardAsk &lt;- はい]]
-[[forwardChoose &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="34" name="forwardRight " tags="" position="2125,625" size="100,100">&lt;img src=&quot;https://pbs.twimg.com/media/EoTP1KJUUAAmd9j?format=jpg&amp;name=medium&quot; class=&quot;center&quot;&gt;
+[[forwardChoose &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="34" name="forwardRight " tags="" position="2125,625" size="100,100">&lt;img src=&quot;https://pbs.twimg.com/media/EoTP1KJUUAAmd9j?format=jpg&amp;name=medium&quot; class=&quot;cropped&quot;&gt;
 
 (text-colour:red)[ナレーター：たけしさん以外の全員がなんとかにげてできました。たけしさんはまだにげられません。]</tw-passagedata><tw-passagedata pid="35" name="forwardMap " tags="" position="1875,625" size="100,100">メーアリ：地図によると、右の部屋は危ないようだ。まっすぐに行こう。
 
