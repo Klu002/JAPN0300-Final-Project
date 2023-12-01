@@ -9,10 +9,21 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play JapnFinal.</tw-noscript></noscript></tw-story>
-<tw-storydata name="JapnFinal" startnode="5" creator="Twine" creator-version="2.7.1" format="Harlowe" format-version="3.3.7" ifid="40C43DDF-E67C-4BFA-919F-7BDEE96DA513" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar
+<tw-storydata name="JapnFinal" startnode="5" creator="Twine" creator-version="2.8.0" format="Harlowe" format-version="3.3.7" ifid="40C43DDF-E67C-4BFA-919F-7BDEE96DA513" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar
 {
 	display: none;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="global" color="green"></tw-tag><tw-passagedata pid="1" name="Down1 " tags="" position="1400,500" size="100,100">ナレーター：地下に行きました。左と右に部屋があります。 
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="global" color="green"></tw-tag><tw-passagedata pid="1" name="Down1 " tags="" position="1400,500" size="100,100">&lt;img src=&quot;https://as1.ftcdn.net/v2/jpg/05/50/90/36/1000_F_550903658_37pxXgusGNQrYJAwmE0uKtrPfulFyNVF.jpg&quot; class=&quot;center&quot;&gt;
+
+
+ナレーター：地下に行きました。左と右に部屋があります。 
 
 (set: $downTraversed to true)
 
@@ -23,7 +34,11 @@
 (set: $johnSpoke to true)
 
 [[downAsk1 &lt;- はい]]
-[[downFork &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="3" name="EveryoneEscapes" tags="" position="500,500" size="100,100">ナレーター：みんなで一緒にこの屋敷を出ました。</tw-passagedata><tw-passagedata pid="4" name="Forward1" tags="" position="2000,500" size="100,100">ナレーター：廊下の方向に行きました。右にドアがあります。
+[[downFork &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="3" name="EveryoneEscapes" tags="" position="500,500" size="100,100">&lt;img src=&quot;https://www.shutterstock.com/image-photo/kids-run-park-large-group-600nw-2237354213.jpg&quot; class=&quot;center&quot;&gt;
+
+(text-colour:green)[ナレーター：みんなで一緒にこの屋敷を出ました。]</tw-passagedata><tw-passagedata pid="4" name="Forward1" tags="" position="2000,500" size="100,100">&lt;img src=&quot;https://media.moddb.com/cache/images/mods/1/44/43012/thumb_620x2000/bandicam_2019-07-16_12-45-31-025.png&quot; class=&quot;center&quot;&gt;
+
+ナレーター：廊下の方向に行きました。右にドアがあります。
 
 (set: $forwardTraversed to true)
 
@@ -31,7 +46,9 @@
 [[forwardRight &lt;- 右の部屋に入る ]]
 (if: $hasMap)[[forwardMap &lt;- 地図を見る]]
 
-</tw-passagedata><tw-passagedata pid="5" name="Start" tags="" position="500,350" size="100,100">ナレーター：あなたの名前は山田です。ある日、あなた、たけしさん、メアリーさん、ジョンさんの四人はいなかに旅行に行って、ある屋敷に泊まりました。実は、この屋敷はお化け屋敷でした。あなたたちはぜんぜん知りませんでした。次の日、あなたたちが起きた時、屋敷の出口には鍵がかけてありました。今、あなたは日記とかばんがあります。皆さんは知らない部屋にいます。日記を使って、お化け屋敷から逃げ出しましょう！
+</tw-passagedata><tw-passagedata pid="5" name="Start" tags="" position="500,350" size="100,100">&lt;img src=&quot;https://wpcdn.us-east-1.vip.tn-cloud.net/www.abc6.com/content/uploads/2020/10/Breakers-at-dusk.jpg&quot; class=&quot;center&quot;&gt;
+
+ナレーター：あなたの名前は山田です。ある日、あなた、たけしさん、メアリーさん、ジョンさんの四人はいなかに旅行に行って、ある屋敷に泊まりました。実は、この屋敷はお化け屋敷でした。あなたたちはぜんぜん知りませんでした。次の日、あなたたちが起きた時、屋敷の出口には鍵がかけてありました。今、あなたは日記とかばんがあります。皆さんは知らない部屋にいます。日記を使って、お化け屋敷から逃げ出しましょう！
 
 [[Start1 &lt;- 次]]
 
@@ -46,9 +63,13 @@
 (set: $downReturned to false)
 (set: $wentForward to false)
 
-(set: $lastPassage to &quot;&quot;)</tw-passagedata><tw-passagedata pid="6" name="Start1 " tags="" position="700,350" size="100,100">ナレーター：今、知らない部屋にいます。何をしますか。 
+(set: $lastPassage to &quot;&quot;)</tw-passagedata><tw-passagedata pid="6" name="Start1 " tags="" position="700,350" size="100,100">&lt;img src=&quot;https://media.wdwnt.com/2023/07/954367-featured.jpg&quot; class=&quot;center&quot;&gt;
 
-[[Start2&lt;- 部屋を出る]]</tw-passagedata><tw-passagedata pid="7" name="Start2" tags="" position="1400,350" size="100,100">ナレーター：三つの道が見えます。どちらの方向に進みますか。 
+ナレーター：今、知らない部屋にいます。何をしますか。 
+
+[[Start2&lt;- 部屋を出る]]</tw-passagedata><tw-passagedata pid="7" name="Start2" tags="" position="1400,350" size="100,100">&lt;img src=&quot;https://as2.ftcdn.net/v2/jpg/05/77/33/45/1000_F_577334545_dCUxUOx4TyFHsiVsqxXvjiabWE0JEdBO.jpg&quot; class=&quot;center&quot;&gt;
+
+ナレーター：三つの道が見えます。どちらの方向に進みますか。 
 
 {(if: $downReturned)
 	[ジョン（本物）：ええ！あなたたちは今までどこにいたの?]
@@ -57,7 +78,9 @@
 
 (if: not $upTraversed)[[Up1 &lt;- 上の階の方向 ]]
 (if: not $forwardTraversed)[[Forward1&lt;-廊下の方向]]
-(if: not $downTraversed)[[Down1 &lt;- 地下の方向]]</tw-passagedata><tw-passagedata pid="8" name="Up1 " tags="" position="800,500" size="100,100">ナレーター：二つの道が見えます。どちらの方向に進みますか。 
+(if: not $downTraversed)[[Down1 &lt;- 地下の方向]]</tw-passagedata><tw-passagedata pid="8" name="Up1 " tags="" position="800,500" size="100,100">&lt;img src=&quot;https://preview.redd.it/zxx07uf38gk61.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=6131d7aadcf4a790558cdc9d6c5d81771658be96&quot; class=&quot;center&quot;&gt;
+
+ナレーター：二つの道が見えます。どちらの方向に進みますか。 
 
 (set: $upTraversed to True)
 
@@ -72,7 +95,9 @@
 
 [[downAsk2 &lt;- 山田：誕生日はいつ？]]
 
-</tw-passagedata><tw-passagedata pid="12" name="downFork " tags="" position="1400,800" size="100,100">[[downLeft &lt;- 山田：左に曲がろう！(ジョンさんを信じない)]]
+</tw-passagedata><tw-passagedata pid="12" name="downFork " tags="" position="1400,800" size="100,100">&lt;img src=&quot;https://as1.ftcdn.net/v2/jpg/05/50/90/36/1000_F_550903658_37pxXgusGNQrYJAwmE0uKtrPfulFyNVF.jpg&quot; class=&quot;center&quot;&gt;
+
+[[downLeft &lt;- 山田：左に曲がろう！(ジョンさんを信じない)]]
 [[downright &lt;- 山田：右に曲がろう！(ジョンさんを信じる)]]</tw-passagedata><tw-passagedata pid="13" name="downGoldKey " tags="" position="1525,1050" size="100,100">ナレーター：金の鍵をとりました。
 
 (set: $hasKey to true)
@@ -98,9 +123,14 @@
 [[downReturn &lt;- 山田：先の廊下に戻ろう]]</tw-passagedata><tw-passagedata pid="17" name="downReturn " tags="" position="1525,1175" size="100,100">たけしさん：うん、そうしよう。 
 
 (set: $downReturned to true)
-(link-goto: &quot;次&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="18" name="downright " tags="" position="1400,925" size="100,100">ナレーター: みんなはえいえんに屋敷に閉じ込められました。 
+(link-goto: &quot;次&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="18" name="downright " tags="" position="1400,925" size="100,100">&lt;img src=&quot;https://cdn.i-scmp.com/sites/default/files/styles/700x400/public/d8/images/canvas/2021/07/27/ca50d6a6-6357-43eb-b31d-4b092e835775_2768211b.jpg?itok=0rg46flQ&amp;v=1627363602&quot; class=&quot;center&quot;&gt;
 
-幽霊：いいね。みんなが私の友達になって、永遠にこの屋敷に一緒に住もう。</tw-passagedata><tw-passagedata pid="19" name="globalDiary" tags="global" position="300,700" size="100,100">自分の日記： 
+(text-colour:red)[
+ナレーター: みんなはえいえんに屋敷に閉じ込められました。 
+
+幽霊：いいね。みんなが私の友達になって、永遠にこの屋敷に一緒に住もう。
+]
+</tw-passagedata><tw-passagedata pid="19" name="globalDiary" tags="global" position="300,700" size="100,100">自分の日記： 
 あなたが起きた時、もうゲームのインベントリーに日記があります。この日記に友達のメアリーさんと たけしさんとジョンさんの自己紹介があります。出口を探しながら、時々友達に質問することができま す。質問の答えが日記に書いたことと違っていたら、その友達は幽霊かもしれません。幽霊の言うこ とを信じない方がいいです。 
 
 メアリーさんの自己紹介： 
@@ -136,13 +166,17 @@
 
 (set: $hasMap to True)
 
-(link-goto: &quot;山田：先の廊下に戻ろう&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="25" name="silverKeyBadEnd " tags="" position="1175,1250" size="100,100">ナレーター：この銀の鍵はのろわれています。みんなはこの屋敷を永遠に出られません。</tw-passagedata><tw-passagedata pid="26" name="upAsk1 " tags="" position="800,875" size="100,100">[[upAskIceCream &lt;- 山田: メアリーさん、どんなアイスクリームが一番すきなの？]]</tw-passagedata><tw-passagedata pid="27" name="upAskCollege " tags="" position="800,1125" size="100,100">メアリーさん：日本語だよ。でも、どうして今こんな質問をしたの？ 
+(link-goto: &quot;山田：先の廊下に戻ろう&quot;, &quot;Start2&quot;)</tw-passagedata><tw-passagedata pid="25" name="silverKeyBadEnd " tags="" position="1175,1250" size="100,100">&lt;img src=&quot;https://i0.wp.com/kimberlymoynahan.com/wp-content/uploads/2012/04/airtightroom.jpg&quot; class=&quot;center&quot;&gt;
+
+(text-colour:red)[ナレーター：この銀の鍵はのろわれています。みんなはこの屋敷を永遠に出られません。]</tw-passagedata><tw-passagedata pid="26" name="upAsk1 " tags="" position="800,875" size="100,100">[[upAskIceCream &lt;- 山田: メアリーさん、どんなアイスクリームが一番すきなの？]]</tw-passagedata><tw-passagedata pid="27" name="upAskCollege " tags="" position="800,1125" size="100,100">メアリーさん：日本語だよ。でも、どうして今こんな質問をしたの？ 
 
 山田：ちょっと興味があったんだ。 気にしないで。
 
 [[upFork &lt;- ナレーター：あなたはメアリーさんの答えを考えています。]]</tw-passagedata><tw-passagedata pid="28" name="upAskIceCream " tags="" position="725,1000" size="100,100">メアリーさん：チョコレートが大好きなんだよ。
 
-[[upAskCollege &lt;- 山田：じゃあ、大学で何を勉強しているの？]]</tw-passagedata><tw-passagedata pid="29" name="upFork " tags="" position="925,875" size="100,100">[[upLeft &lt;- 左に曲がる (メアリーさんを信じない)]]
+[[upAskCollege &lt;- 山田：じゃあ、大学で何を勉強しているの？]]</tw-passagedata><tw-passagedata pid="29" name="upFork " tags="" position="925,875" size="100,100">&lt;img src=&quot;https://preview.redd.it/zxx07uf38gk61.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=6131d7aadcf4a790558cdc9d6c5d81771658be96&quot; class=&quot;center&quot;&gt;
+
+[[upLeft &lt;- 左に曲がる (メアリーさんを信じない)]]
 [[upright &lt;- 右に曲がる (メアリーさんを信じる)]]</tw-passagedata><tw-passagedata pid="30" name="upLeft " tags="" position="925,1050" size="100,100">山田：この廊下には何もないね。 
 
 メアリーさん：そうだね。 
@@ -169,7 +203,9 @@
 (set: $wentForward to true)
 
 [[forwardAsk &lt;- はい]]
-[[forwardChoose &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="34" name="forwardRight " tags="" position="2125,625" size="100,100">ナレーター：たけしさん以外の全員がなんとかにげてできました。たけしさんはまだにげられ ません。</tw-passagedata><tw-passagedata pid="35" name="forwardMap " tags="" position="1875,625" size="100,100">メーアリ：地図によると、右の部屋は危ないようだ。まっすぐに行こう。
+[[forwardChoose &lt;- いいえ]]</tw-passagedata><tw-passagedata pid="34" name="forwardRight " tags="" position="2125,625" size="100,100">&lt;img src=&quot;https://pbs.twimg.com/media/EoTP1KJUUAAmd9j?format=jpg&amp;name=medium&quot; class=&quot;center&quot;&gt;
+
+(text-colour:red)[ナレーター：たけしさん以外の全員がなんとかにげてできました。たけしさんはまだにげられません。]</tw-passagedata><tw-passagedata pid="35" name="forwardMap " tags="" position="1875,625" size="100,100">メーアリ：地図によると、右の部屋は危ないようだ。まっすぐに行こう。
 
 [[forwardStrait &lt;- まっすぐに行く ]]</tw-passagedata><tw-passagedata pid="36" name="forwardAsk " tags="" position="2000,750" size="100,100">山田さん：どこで働いている？ 
 
@@ -182,8 +218,10 @@
 
 
 
-</tw-passagedata><tw-passagedata pid="37" name="forwardGive " tags="" position="2075,1125" size="100,100">ナレーター：日記の中に屋敷を出る鍵がありました。みんなで一緒にこの屋敷を出ました。
-</tw-passagedata><tw-passagedata pid="38" name="forwardDontGive " tags="" position="1875,1125" size="100,100">ナレーター：廊下に戻ります。 
+</tw-passagedata><tw-passagedata pid="37" name="forwardGive " tags="" position="2075,1125" size="100,100">&lt;img src=&quot;https://www.shutterstock.com/image-photo/kids-run-park-large-group-600nw-2237354213.jpg&quot; class=&quot;center&quot;&gt;
+
+(text-colour:green)[ナレーター：日記の中に屋敷を出る鍵がありました。みんなで一緒にこの屋敷を出ました。
+]</tw-passagedata><tw-passagedata pid="38" name="forwardDontGive " tags="" position="1875,1125" size="100,100">ナレーター：廊下に戻ります。 
 
 (link-goto: &quot;次&quot;, &quot;Forward1&quot;)
 </tw-passagedata><tw-passagedata pid="39" name="downAsk2 " tags="" position="1525,775" size="100,100">ジョンさん：誕生日がいつか思い出せない。どうしたんだ？ 
